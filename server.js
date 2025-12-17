@@ -3,6 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
+const appointmentRoutes = require('./routes/appointment');
+const courseRoutes = require('./routes/course');
+const jobRoutes = require('./routes/job');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,6 +16,9 @@ app.use(express.json());
 connectDB(process.env.MONGO_URI);
 
 app.use('/api/auth', authRoutes);
+app.use('/api/appointments', appointmentRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/jobs', jobRoutes);
 
 app.get('/', (req, res) => res.send('Hospitify backend running'));
 
