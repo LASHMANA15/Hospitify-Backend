@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const appointmentRoutes = require('./routes/appointment');
 const courseRoutes = require('./routes/course');
 const jobRoutes = require('./routes/job');
+const userRoutes = require('./routes/user');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Hospitify backend running'));
 
