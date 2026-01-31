@@ -1,13 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/auth');
-const appointmentRoutes = require('./routes/appointment');
-const courseRoutes = require('./routes/course');
-const jobRoutes = require('./routes/job');
-const userRoutes = require('./routes/user');
-const adminRoutes = require('./routes/admin');
+const path = require('path');
+const connectDB = require(path.join(__dirname, 'config', 'db'));
+const authRoutes = require(path.join(__dirname, 'routes', 'auth'));
+const appointmentRoutes = require(path.join(__dirname, 'routes', 'appointment'));
+const courseRoutes = require(path.join(__dirname, 'routes', 'course'));
+const jobRoutes = require(path.join(__dirname, 'routes', 'job'));
+const userRoutes = require(path.join(__dirname, 'routes', 'user'));
+const adminRoutes = require(path.join(__dirname, 'routes', 'admin'));
 
 const app = express();
 const PORT = process.env.PORT || 5000;
