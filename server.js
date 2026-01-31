@@ -7,6 +7,7 @@ const appointmentRoutes = require('./routes/appointment');
 const courseRoutes = require('./routes/course');
 const jobRoutes = require('./routes/job');
 const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -37,6 +38,7 @@ app.use('/api/appointments', appointmentRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/', (req, res) => res.json({ message: 'Hospitify API is running', status: 'OK' }));
 
