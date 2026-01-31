@@ -2,13 +2,27 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const connectDB = require(path.join(__dirname, 'config', 'db'));
-const authRoutes = require(path.join(__dirname, 'routes', 'auth'));
-const appointmentRoutes = require(path.join(__dirname, 'routes', 'appointment'));
-const courseRoutes = require(path.join(__dirname, 'routes', 'course'));
-const jobRoutes = require(path.join(__dirname, 'routes', 'job'));
-const userRoutes = require(path.join(__dirname, 'routes', 'user'));
-const adminRoutes = require(path.join(__dirname, 'routes', 'admin'));
+// Try different path resolutions for deployment environments
+let authRoutes, appointmentRoutes, courseRoutes, jobRoutes, userRoutes, adminRoutes, connectDB;
+
+try {
+  connectDB = require('./config/db');
+  authRoutes = require('./routes/auth');
+  appointmentRoutes = require('./routes/appointment');
+  courseRoutes = require('./routes/course');
+  jobRoutes = require('./routes/job');
+  userRoutes = require('./routes/user');
+  adminRoutes = require('./routes/admin');
+} catch (err) {
+  console.log('Trying absolute paths...');
+  connectDB = require(path.join(__dirname, 'config', 'db'));
+  authRoutes = require(path.join(__dirname, 'routes', 'auth'));
+  appointmentRoutes = require(path.join(__dirname, 'routes', 'appointment'));
+  courseRoutes = require(path.join(__dirname, 'routes', 'course'));
+  jobRoutes = require(path.join(__dirname, 'routes', 'job'));
+  userRoutes = require(path.join(__dirname, 'routes', 'user'));
+  adminRoutes = require(path.join(__dirname, 'routes', 'admin'));
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
